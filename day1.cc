@@ -55,8 +55,6 @@ int part2()
     myfile.open("input.txt");
     std::string letter_word = "";
     int sum = 0;
-    int count = 0;
-
     while ( getline (myfile,line) ) 
     {
         int first = -1, last;
@@ -79,7 +77,7 @@ int part2()
                 int index;
                 for(int j = 0; j < 9; j++)
                 {
-                    if( (index = letter_word.find(string_digit_table[j].str)) != std::string::npos)
+                    if( (index = letter_word.rfind(string_digit_table[j].str)) != std::string::npos)
                     {
                         if(index <= max_index)
                             continue;
@@ -89,7 +87,6 @@ int part2()
                             first = string_digit_table[j].digit;
                         }
                         last = string_digit_table[j].digit;
-                        letter_word.clear();    /*This line will consider 2 as the last digit in case of "twone"*/
                     } 
                 }
             }
